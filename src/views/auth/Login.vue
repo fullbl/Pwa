@@ -128,6 +128,7 @@ export default {
       let email = this.email;
       let password = this.password;
       const _this = this
+      console.debug(this.$t("messages.wrong_password"))
 
       this.show = true
       this.error = false
@@ -140,7 +141,6 @@ export default {
       }).catch((err) => {
         _this.show = false
 
-        console.debug(err.response.data)
 
         switch (err.response.data.code) {
           case 'EML_NaN':
@@ -148,7 +148,7 @@ export default {
             _this.verify = true
             break;
           default:
-            _this.error = `The credentials you entered are not valid.`
+            _this.error = ''
             break;
         }
 
